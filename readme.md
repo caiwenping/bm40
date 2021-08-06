@@ -1,4 +1,4 @@
-# bm40hsrgb
+# BM40 RGB 40%
 
 ![BM40 RGB](https://rgoulter.com/images/keyboards/bm40rgb/bm40rgb_large.jpg)
 
