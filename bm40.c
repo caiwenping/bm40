@@ -16,6 +16,7 @@
 #include "bm40.h"
 
 #if defined(RGB_MATRIX_ENABLE)
+#define LED_MATRIX_CENTER { 105, 30 }
 led_config_t g_led_config = {
     {
         // Key Matrix to LED Index
@@ -25,17 +26,19 @@ led_config_t g_led_config = {
         {36, 37, 38, 39, 40, 41, NO_LED, 42, 43, 44, 45, 46}
     }, {
         // LED Index to Physical Position
-        {  0,  0}, { 20,  0}, { 40,  0}, {61,  0}, {81,  0}, {101,  0}, {122,  0}, {142,  0}, {162,  0}, {183,  0}, {203,  0}, {224,  0},
-        {  0, 21}, { 20, 21}, { 40, 21}, {61, 21}, {81, 21}, {101, 21}, {122, 21}, {142, 21}, {162, 21}, {183, 21}, {203, 21}, {224, 21},
-        {  0, 42}, { 20, 42}, { 40, 42}, {61, 42}, {81, 42}, {101, 42}, {122, 42}, {142, 42}, {162, 42}, {183, 42}, {203, 42}, {224, 42},
-        {  0, 64}, { 20, 64}, { 40, 64}, {61, 64}, {81, 64},       {111, 64},      {142, 64}, {162, 64}, {183, 64}, {203, 64}, {224, 64},
-        {220, 32}, {176, 32}, {132, 32}, {88, 32}, {44, 32}, {0, 32}  //under glow
+        {   0,   0 }, { 19,   0 }, {  38,   0 }, {  57,   0 }, {  76,   0 }, {  95,   0 }, {  114,   0 }, { 133,   0 }, { 152,   0 }, { 171,   0 }, { 190,   0 }, { 210,   0 },
+        {   0,  19 }, { 19,  19 }, {  38,  19 }, {  57,  19 }, {  76,  19 }, {  95,  19 }, {  114,  19 }, { 133,  19 }, { 152,  19 }, { 171,  19 }, { 190,  19 }, { 210,  19 },
+        {   0,  38 }, { 19,  38 }, {  38,  38 }, {  57,  38 }, {  76,  38 }, {  95,  38 }, {  114,  38 }, { 133,  38 }, { 152,  38 }, { 171,  38 }, { 190,  38 }, { 210,  38 },
+        {   0,  58 }, { 19,  58 }, {  38,  58 }, {  57,  58 }, {  76,  58 },         {  105,  58 },       { 133,  58 }, { 152,  58 }, { 171,  58 }, { 190,  58 }, { 210,  58 },
+
+        // UNDERGLOW
+        {   170, 29 }, {  140,  29 }, {  110, 29 }, { 80,  29 }, { 50,  29 }, { 30,  29 }
     }, {
         // LED Index to Flag
         1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
         1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-        9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
-        1, 1, 1, 1, 1,   1,  1, 4, 1, 1, 1,
+        1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+        1, 1, 1, 1, 1,   1,  1, 1, 1, 1, 1,
         2, 2, 2, 2, 2, 2  //under glow
     }
 };
@@ -43,12 +46,34 @@ led_config_t g_led_config = {
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
         for (uint8_t i = led_min; i <= led_max; i++) {
-            if (g_led_config.flags[i] & 8) {
-                rgb_matrix_set_color(i, RGB_RED);
+            if (g_led_config.flags[i] & 4) {
+                rgb_matrix_set_color(i, 0x10,0x00,0x00);
             }
         }
     }
-}  // Capslock Light settings
+    for (uint8_t i = led_min; i <= led_max; i++) {
+        switch(get_highest_layer(layer_state|default_layer_state)) {
+            case 1:
+                rgb_matrix_set_color(i, 0x00,0x1f,0x27);
+                break;
+            case 2:
+                rgb_matrix_set_color(i, 0x20,0x00,0x27);
+                break;
+            case 3:
+                rgb_matrix_set_color(i, 0x25,0x26,0x00);
+                break;
+            case 4:
+                //rgb_matrix_set_color(i, RGB_RED);
+                break;
+            case 5:
+                rgb_matrix_set_color(i, 0x01,0x18,0x00);
+                break;
+            default:
+                break;
+        }
+    }
+}  // Capslock and layer indicator
+
 
 void suspend_power_down_kb(void) {
     rgb_matrix_set_suspend_state(true);
