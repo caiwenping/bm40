@@ -44,37 +44,37 @@ led_config_t g_led_config = {
 };
 
 const bool text_1[] = {
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1,
-    0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-    0, 0, 0, 0, 1,   0,  1, 1, 1, 1, 1,
+    0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    0, 0, 0, 0, 0,   0,  0, 1, 1, 1, 1,
 };
 
 const bool text_2[] = {
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-    0, 0, 0, 0, 1,   0,  0, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 0,   0,  0, 0, 0, 0, 0,
 };
 
 const bool text_3[] = {
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-    0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
-    0, 0, 0, 1, 0,   1,  1, 1, 1, 1, 1,
+    0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1,   1,  1, 0, 0, 0, 0,
 };
 
 const bool text_4[] = {
-    0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 1, 0,   1,  0, 0, 0, 0, 0,
+    1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 1, 1, 0,   0,  0, 1, 1, 1, 1,
 };
 
 const bool text_5[] = {
-    1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1,
-    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1,
-    0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1,
+    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
     0, 0, 0, 0, 0,   1,  1, 1, 1, 1, 1,
 };
 
@@ -87,27 +87,29 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             }
         }
     }
-    for (uint8_t i = led_min; i <= led_max; i++) {
+
+    uint8_t i,r,g,b;
+    for (i = led_min; i <= led_max; i++){
         switch(get_highest_layer(layer_state|default_layer_state)) {
             case 1:
-                if (text_1[i]) rgb_matrix_set_color(i, 0x00,0x1f,0x27);
-                else rgb_matrix_set_color(i, 0x00,0x00,0x00);
+                r=0x00; g=0x18; b=0x20;
+                if (text_1[i]) rgb_matrix_set_color(i, r,g,b);
                 break;
             case 2:
-                if (text_2[i]) rgb_matrix_set_color(i, 0x20,0x00,0x27);
-                else rgb_matrix_set_color(i, 0x00,0x00,0x00);
+                r=0x20; g=0x00; b=0x27;
+                if (text_2[i]) rgb_matrix_set_color(i, r,g,b);
                 break;
             case 3:
-                if (text_3[i]) rgb_matrix_set_color(i, 0x25,0x26,0x00);
-                else rgb_matrix_set_color(i, 0x00,0x00,0x00);
+                r=0x25; g=0x26; b=0x00;
+                if (text_3[i]) rgb_matrix_set_color(i, r,g,b);
                 break;
             case 4:
-                if (text_4[i]) rgb_matrix_set_color(i, 0x30,0x00,0x00);
-                //else rgb_matrix_set_color(i, 0x00,0x00,0x00);
+                r=0x25; g=0x00; b=0x00;
+                if (text_4[i]) rgb_matrix_set_color(i, r,g,b);
                 break;
             case 5:
-                if (text_5[i]) rgb_matrix_set_color(i, 0x01,0x18,0x00);
-                else rgb_matrix_set_color(i, 0x00,0x00,0x00);
+                r=0x03; g=0x18; b=0x00;
+                if (text_5[i]) rgb_matrix_set_color(i, r,g,b);
                 break;
             default:
                 break;
