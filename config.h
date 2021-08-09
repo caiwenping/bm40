@@ -86,7 +86,7 @@
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-    //#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
+    #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
     #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
@@ -100,7 +100,7 @@
 #endif
 
 /* Configuration for Vial */
-#define VIAL_KEYBOARD_UID {0x6A, 0x02, 0xE7, 0x64, 0x1D, 0x59, 0x0D, 0xC8}
+#define VIAL_KEYBOARD_UID {0x6A, 0x02, 0xE7, 0x64, 0x1D, 0x59, 0x0D, 0xC8} 
 
 // to unlock the keyboard
 //#define VIAL_UNLOCK_COMBO_ROWS { 0, 2 }
@@ -115,7 +115,7 @@
 #define MOUSEKEY_INTERVAL 30            //Time between cursor movements in milliseconds
 #define MOUSEKEY_MOVE_DELTA 1           //Step size
 #define MOUSEKEY_MAX_SPEED 30           //Maximum cursor speed at which acceleration stops
-#define MOUSEKEY_TIME_TO_MAX 190         //Time until maximum cursor speed is reached
+#define MOUSEKEY_TIME_TO_MAX 50         //Time until maximum cursor speed is reached
 #define MOUSEKEY_WHEEL_DELAY 100        //Delay between pressing a wheel key and wheel movement
 #define MOUSEKEY_WHEEL_INTERVAL 100     //Time between wheel movements
 #define MOUSEKEY_WHEEL_MAX_SPEED 8      //Maximum number of scroll steps per scroll action

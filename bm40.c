@@ -32,7 +32,7 @@ led_config_t g_led_config = {
         {   0,  58 }, { 19,  58 }, {  38,  58 }, {  57,  58 }, {  76,  58 },         {  105,  58 },       { 133,  58 }, { 152,  58 }, { 171,  58 }, { 190,  58 }, { 210,  58 },
 
         // UNDERGLOW
-        {   170, 29 }, {  140,  29 }, {  110, 29 }, { 80,  29 }, { 50,  29 }, { 30,  29 }
+        {   196, 36 }, {  157,  36 }, {  123, 36 }, { 90,  36 }, { 57,  36 }, { 24,  36 }
     }, {
         // LED Index to Flag
         1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
@@ -46,7 +46,7 @@ led_config_t g_led_config = {
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
         for (uint8_t i = led_min; i <= led_max; i++) {
-            if (g_led_config.flags[i] & 4) {
+            if (g_led_config.flags[i] & LED_FLAG_KEYLIGHT) {
                 rgb_matrix_set_color(i, 0x10,0x00,0x00);
             }
         }
@@ -54,16 +54,24 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     for (uint8_t i = led_min; i <= led_max; i++) {
         switch(get_highest_layer(layer_state|default_layer_state)) {
             case 1:
-                rgb_matrix_set_color(i, 0x00,0x1f,0x27);
+                if (g_led_config.flags[i] & LED_FLAG_MODIFIER) {
+                    rgb_matrix_set_color(i, 0x00,0x1f,0x27);
+                }
                 break;
             case 2:
-                rgb_matrix_set_color(i, 0x20,0x00,0x27);
+                if (g_led_config.flags[i] & LED_FLAG_MODIFIER) {
+                    rgb_matrix_set_color(i, 0x20,0x00,0x27);
+                }
                 break;
             case 3:
-                rgb_matrix_set_color(i, 0x25,0x26,0x00);
+                if (g_led_config.flags[i] & LED_FLAG_MODIFIER) {
+                    rgb_matrix_set_color(i, 0x25,0x26,0x00);
+                }
                 break;
             case 4:
-                //rgb_matrix_set_color(i, RGB_RED);
+                if (g_led_config.flags[i] & LED_FLAG_MODIFIER) {
+                    rgb_matrix_set_color(i, 0x30,0x00,0x00);
+                }
                 break;
             case 5:
                 rgb_matrix_set_color(i, 0x01,0x18,0x00);
@@ -72,7 +80,7 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 break;
         }
     }
-}  // Capslock and layer indicator
+}  // Capslock and layer indicator.
 
 
 void suspend_power_down_kb(void) {
@@ -84,4 +92,5 @@ void suspend_wakeup_init_kb(void) {
     rgb_matrix_set_suspend_state(false);
     suspend_wakeup_init_user();
 }
+
 #endif

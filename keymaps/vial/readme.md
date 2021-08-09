@@ -1,1 +1,1 @@
-# The via keymap for bm40hsrgb
+# The via keymap for bm40
