@@ -80,40 +80,47 @@ const bool text_5[] = {
 
 
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    uint8_t i,r,g,b;
     if (host_keyboard_led_state().caps_lock) {
-        for (uint8_t i = led_min; i <= led_max; i++) {
+        for (i = led_min; i <= led_max; i++) {
             if (g_led_config.flags[i] & LED_FLAG_KEYLIGHT) {
                 rgb_matrix_set_color(i, 0x00,0x09,0x00);
             }
         }
     }
-
-    uint8_t i,r,g,b;
-    for (i = led_min; i <= led_max; i++){
-        switch(get_highest_layer(layer_state|default_layer_state)) {
-            case 1:
+    switch(get_highest_layer(layer_state|default_layer_state)) {
+        case 1:
+            for (i = led_min; i <= led_max; i++){
                 r=0x00; g=0x18; b=0x20;
                 if (text_1[i]) rgb_matrix_set_color(i, r,g,b);
-                break;
-            case 2:
+            }
+            break;
+        case 2:
+            for (i = led_min; i <= led_max; i++){
                 r=0x20; g=0x00; b=0x27;
                 if (text_2[i]) rgb_matrix_set_color(i, r,g,b);
-                break;
-            case 3:
+            }
+            break;
+        case 3:
+            for (i = led_min; i <= led_max; i++){
                 r=0x25; g=0x26; b=0x00;
                 if (text_3[i]) rgb_matrix_set_color(i, r,g,b);
-                break;
-            case 4:
+            }
+            break;
+        case 4:
+            for (i = led_min; i <= led_max; i++){
                 r=0x25; g=0x00; b=0x00;
                 if (text_4[i]) rgb_matrix_set_color(i, r,g,b);
-                break;
-            case 5:
+            }
+            break;
+        case 5:
+            for (i = led_min; i <= led_max; i++){
                 r=0x03; g=0x18; b=0x00;
                 if (text_5[i]) rgb_matrix_set_color(i, r,g,b);
-                break;
-            default:
-                break;
-        }
+            }
+            break;
+        default:
+            break;
     }
 }  // Capslock and layer indicator.
 
