@@ -2,6 +2,8 @@
 
 ![BM40 RGB](https://rgoulter.com/images/keyboards/bm40rgb/bm40rgb_large.jpg)
 
+![BM40 keymap](https://github.com/caiwenping/bm40/blob/main/bm40-keymap.png)
+
 An ortholinear 40% hotswap keyboard with per-key RGB in-switch LEDs and RGB Backlighting, from KP Republic.
 
 This firmware was originally taken from a kbfirmware.json and manually converted. You may find the original `.json` files [here](https://drive.google.com/drive/folders/1tlTHQIFcluK2mjZ4UbbKCsdRLgSRSPw6).
