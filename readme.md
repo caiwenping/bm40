@@ -1,6 +1,6 @@
 # BM40 RGB 40%
 
-![BM40 RGB](https://rgoulter.com/images/keyboards/bm40rgb/bm40rgb_large.jpg)
+![BM40 RGB](https://github.com/caiwenping/bm40/blob/main/keyboard/20210816-P1020591.jpg)
 
 ![BM40 keymap](https://github.com/caiwenping/bm40/blob/main/bm40-keymap.png)
 
