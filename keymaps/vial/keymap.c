@@ -108,20 +108,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Layer 5 Numberic
  * ,-----------------------------------------------------------------------------------.
- * | ESC  |   Q  |   W  |   E  |   R  |   7  |   8  |   9  |   -  |   /  |      | Bksp |
+ * | ESC  |      |      |      |      |   7  |   8  |   9  |   -  |   /  |      | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |   A  |   S  |   D  |   F  |   4  |   5  |   6  |   +  |   *  |      |      |
+ * | TAB  |      |      |      |      |   4  |   5  |   6  |   +  |   *  |      |  Dek |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   1  |   2  |   3  |   =  |      |      |Enter |
+ * | Shift|      |      |      |      |   1  |   2  |   3  |   =  |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Ctrl |  GUI |  Alt | TG(5)|      |      0      |   .  | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [5] = LAYOUT_planck_mit(
-    KC_ESC,   KC_Q,      KC_W,    KC_E,    KC_R,  KC_7,   KC_8,   KC_9,    KC_KP_MINUS,  KC_KP_SLASH,     KC_NO,   KC_BSPC,
-    KC_DEL,   KC_A,      KC_S,    KC_D,    KC_F,  KC_4,   KC_5,   KC_6,    KC_KP_PLUS,   KC_KP_ASTERISK,  KC_NO,   KC_NO,
-    KC_LSFT,  KC_Z,      KC_X,    KC_C,    KC_V,  KC_1,   KC_2,   KC_3,    KC_EQL,       KC_NO,           KC_NO,   KC_ENT ,
-    KC_LCTL,  KC_LGUI,   KC_LALT, TG(5),  KC_NO,      KC_0,      KC_DOT,  KC_LEFT,      KC_DOWN,         KC_UP,   KC_RGHT
+    KC_ESC,   KC_NO,     KC_NO,   KC_NO,   KC_NO,  KC_7,   KC_8,   KC_9,    KC_KP_MINUS,  KC_KP_SLASH,     KC_NO,   KC_BSPC,
+    KC_TAB,   KC_NO,     KC_NO,   KC_NO,   KC_NO,  KC_4,   KC_5,   KC_6,    KC_KP_PLUS,   KC_KP_ASTERISK,  KC_NO,   KC_DEL,
+    KC_LSFT,  KC_NO,     KC_NO,   KC_NO,   KC_NO,  KC_1,   KC_2,   KC_3,    KC_EQL,       KC_NO,           KC_NO,   KC_ENT ,
+    KC_LCTL,  KC_LGUI,   KC_LALT, TG(5),   KC_NO,      KC_0,      KC_DOT,   KC_LEFT,      KC_DOWN,         KC_UP,   KC_RGHT
 )
 
 };
